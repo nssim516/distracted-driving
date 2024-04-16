@@ -1,0 +1,71 @@
+% The purpose of this program is to vizualize data collected in the "Distracted Driving at Virginia Tech" survey. 
+clear;
+clc;
+
+%% How often do you experience a ‘close call’ on campus?
+% Dataset for number of individuals corresponding to each level of intensity
+close_calls = [31, 59, 35, 8, 5];
+
+figure;
+bar(close_calls);
+xlabel('Intensity of Close Encounter');
+ylabel ('Number of Pedestrians');
+ylim([0, max(close_calls)+ 10]);
+title('Close Encounter Frequency for Pedestrians at Virginia Tech');
+
+%% Do you feel safe walking around campus?
+labels = { 'No, I feel like I am in danger of severe injury because of drivers on campus' 'Somewhat, I occasionally feel unsafe because of drivers on campus' 'Yes, I feel safe and not in danger of injury while walking on campus'};
+values = [5.1, 55.8, 39.1];
+figure;
+h = pie(values, labels);
+title('Do you feel safe walking around campus with the current traffic patterns and level of traffic?');
+axis equal;
+text_labels = cellfun(@(x) sprintf('%1.1f%%', x), num2cell(values), 'UniformOutput', false);
+text_angles = cumsum([0, values(1:end-1)/100 * 360]);
+text_radius = 1.2;
+
+for i = 1:numel(labels)
+    text(text_radius * cosd(text_angles(i) + values(i)/2), text_radius * sind(text_angles(i) + values(i)/2), text_labels{i}, 'HorizontalAlignment', 'center', 'FontSize', 10, 'FontWeight', 'bold', 'Color', 'w');
+end
+
+%% Do you feel safe driving around campus?
+labels = {
+    'Yes, I am not concerned about pedestrians walking in front of me or contributing to dangerous collisions'
+    'Somewhat, I occasionally worry that pedestrians will walk in front of me while my vehicle is moving'
+    'I do not drive on campus'
+    'No, feel unsafe driving and frequently have close encounters with pedestrians'
+};
+values = [15.3, 48.3, 30.5, 5.9];
+figure;
+h = pie(values, labels);
+title('Do you feel safe driving around campus with the current behavior and attitude of pedestrians?');
+axis equal;
+text_labels = cellfun(@(x) sprintf('%1.1f%%', x), num2cell(values), 'UniformOutput', false);
+text_angles = cumsum([0, values(1:end-1)/100 * 360]);
+text_radius = 1.2; 
+
+for i = 1:numel(labels)
+    text(text_radius * cosd(text_angles(i) + values(i)/2), text_radius * sind(text_angles(i) + values(i)/2), text_labels{i}, 'HorizontalAlignment', 'center', 'FontSize', 10, 'FontWeight', 'bold', 'Color', 'w');
+end
+
+%% When walking on campus, do you do any of the following?
+categories_walking = {'Headphones/Earbuds', 'Listen to Music', 'Browse Phone/Device', 'Text', 'Eating'};
+responses_walking = [107, 104, 96, 90, 20];
+
+figure;
+bar(categories_walking, responses_walking, 'magenta');
+title('When walking on campus, do you do any of the following?');
+xlabel('Activities');
+ylabel('Number of Participants');
+grid on;
+
+%% When driving on campus, do you do any of the following?
+categories_driving = {'Headphones/Earbuds', 'Listen to Music', 'Browse Phone/Device', 'Text', 'Eating'};
+responses_driving = [3, 67, 9, 10, 14];
+
+figure;
+bar(categories_driving, responses_driving, 'blue');
+title('When driving on campus, do you do any of the following?');
+xlabel('Activities');
+ylabel('Number of Participants');
+grid on;

@@ -1,6 +1,3 @@
-----------------------------------------------------------------------------
-This code analyzes data from a survey titled "Distracted Driving at Virginia Tech," distributed to over 1,000 students, staff, and faculty to visually represent pedestrian experiences and behaviors on campus. It creates bar charts to display the frequency of close encounters pedestrians face and the level of safety they perceive while walking and driving. Additionally, it examines common distractions for pedestrians and drivers on campus, such as headphone use, listening to music, browsing devices, texting, and eating, providing insights into potential risk factors for pedestrian safety.
-----------------------------------------------------------------------------
 # Distracted Driving Visualization
 
 A data visualization tool to analyze responses from a survey titled "Distracted Driving at Virginia Tech," distributed to over 1,000 students, staff, and faculty to visually represent pedestrian experiences and behaviors on campus. It explore patterns of pedestrian and driver behavior on campus, as well as perceptions of safety and common distractions.
